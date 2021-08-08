@@ -7,15 +7,15 @@
   
   <title>类和对象 | 小树的博客</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="类声明和成员函数定义的分离： 声明放在 头文件中，定义放在 源文件中 123456789101112131415161718192021class Time &amp;#123;    public:        int hour;        int minute;        int second;        void set();        void display();&amp;#125">
+  <meta name="description" content="类和对象的相关笔记">
 <meta property="og:type" content="article">
 <meta property="og:title" content="类和对象">
 <meta property="og:url" content="http://yoursite.com/2021/08/08/%E7%B1%BB%E5%92%8C%E5%AF%B9%E8%B1%A1/index.html">
 <meta property="og:site_name" content="小树的博客">
-<meta property="og:description" content="类声明和成员函数定义的分离： 声明放在 头文件中，定义放在 源文件中 123456789101112131415161718192021class Time &amp;#123;    public:        int hour;        int minute;        int second;        void set();        void display();&amp;#125">
+<meta property="og:description" content="类和对象的相关笔记">
 <meta property="og:locale" content="zh_CN">
 <meta property="article:published_time" content="2021-08-08T07:53:31.000Z">
-<meta property="article:modified_time" content="2021-08-08T09:40:57.357Z">
+<meta property="article:modified_time" content="2021-08-08T11:37:35.279Z">
 <meta property="article:author" content="mozp1962">
 <meta name="twitter:card" content="summary">
   
@@ -92,7 +92,8 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <a id="more"></a>
+        <p>类和对象的相关笔记</p>
+<a id="more"></a>
 
 <p>类声明和成员函数定义的分离：</p>
 <p>声明放在 头文件中，定义放在 源文件中</p>
@@ -118,11 +119,30 @@
 <p>当对象的生命周期结束时，会自动执行析构函数。在撤销对象占用的内存之前完成一些清理工作</p>
 <p>构造和析构的先后顺序大原则是：先构造的后析构，后构造的先析构，相当于一个栈，先进后出</p>
 <ul>
-<li>5 </li>
+<li>5 对象指针</li>
 </ul>
+<p>在建立对象时， 系统会为每一个对象分配一定的存储空间，以存放其数据成员。对象空间的起始地址就是对象的指针。 可以定义一个指针，用于存放对象的地址，</p>
+<p><code>类名 * 对象指针名</code></p>
+<figure class="highlight sas"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">Time <span class="comment">*pt;</span></span><br><span class="line">Time t3;</span><br><span class="line">pt = <span class="variable">&amp;t3</span>;</span><br><span class="line"></span><br><span class="line"><span class="comment">*pt </span></span><br><span class="line"><span class="comment"></span></span><br><span class="line"><span class="comment">(*pt).hour;</span></span><br><span class="line"></span><br><span class="line">pt-&gt;hour;</span><br><span class="line"></span><br><span class="line">(<span class="comment">*pt).display();</span></span><br><span class="line"></span><br><span class="line">pt-&gt;<span class="meta">display</span>();</span><br></pre></td></tr></table></figure>
+
 <ul>
-<li>6 </li>
+<li>6 指向普通函数的指针变量</li>
 </ul>
+<p><code>类型名(*指针变量名)(参数列表)</code></p>
+<p>如，</p>
+<figure class="highlight crystal"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">void (*p)();  <span class="regexp">//</span> p是指向void型函数的指针变量</span><br><span class="line"></span><br><span class="line">p = <span class="function"><span class="keyword">fun</span>; <span class="title">/</span></span>/ <span class="function"><span class="keyword">fun</span>的入口地址赋予<span class="title">p</span></span>, p 指向函数<span class="function"><span class="keyword">fun</span></span></span><br><span class="line"><span class="function"></span></span><br><span class="line"><span class="function">(<span class="title">*</span></span>p)();  <span class="regexp">//</span> 调用<span class="function"><span class="keyword">fun</span>函数</span></span><br></pre></td></tr></table></figure>
+
+
+<ul>
+<li>7 指向对象成员函数的指针</li>
+</ul>
+<figure class="highlight autohotkey"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">指向对象成员函数的指针，形式：</span><br><span class="line"><span class="title">数据类型名(类名::</span>*指针变量名)(参数列表)</span><br><span class="line">如，</span><br><span class="line"><span class="title">void(Time::</span>*ptFun)()</span><br><span class="line"></span><br><span class="line">是指针变量指向一个公用成员函数的一般形式为：</span><br><span class="line"><span class="title">指针变量名=&amp;类名::</span>成员函数名<span class="comment">;</span></span><br><span class="line">如，</span><br><span class="line"><span class="title">ptFun = &amp;Time::</span>display<span class="comment">;</span></span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>8 this 指针</li>
+</ul>
+<p>在每一个成员函数中，都包含了一个特殊的指针，名字是固定的，成为this。他是指向本类对象的指针，他的值是当前被调用的成员函数所在的对象的起始地址。他是隐式使用的，作为参数被传递给成员函数的（编译系统自动实现的）</p>
+<p>注意，成员函数运算符”.”优先级高于指针运算符”*”,<br>(*this).hour ,不能写成 *this.hour</p>
 
       
     </div>

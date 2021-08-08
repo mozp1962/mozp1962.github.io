@@ -92,38 +92,12 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <a id="more"></a>
-
-<p>类声明和成员函数定义的分离：</p>
-<p>声明放在 头文件中，定义放在 源文件中</p>
-<figure class="highlight processing"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line">class Time &#123;</span><br><span class="line">    <span class="keyword">public</span>:</span><br><span class="line">        <span class="built_in">int</span> <span class="built_in">hour</span>;</span><br><span class="line">        <span class="built_in">int</span> <span class="built_in">minute</span>;</span><br><span class="line">        <span class="built_in">int</span> <span class="built_in">second</span>;</span><br><span class="line"></span><br><span class="line">        <span class="keyword">void</span> <span class="built_in">set</span>();</span><br><span class="line">        <span class="keyword">void</span> display();</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line">Time::<span class="built_in">set</span>() &#123;</span><br><span class="line">    <span class="built_in">hour</span> = <span class="number">10</span>;</span><br><span class="line">    <span class="built_in">minute</span> = <span class="number">20</span>;</span><br><span class="line">    <span class="built_in">second</span> = <span class="number">50</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">Time::display() &#123;</span><br><span class="line">    cout&lt;&lt;<span class="built_in">hour</span>&lt;&lt;<span class="string">":"</span>&lt;&lt;<span class="built_in">minute</span>&lt;&lt;<span class="string">":"</span>&lt;&lt;<span class="built_in">second</span>&lt;&lt;endl;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">//</span></span><br></pre></td></tr></table></figure>
-
-<ul>
-<li><p>1 类不是一个实体，而是一种抽象类型，并不占存储空间。</p>
-</li>
-<li><p>2 用类去定义对象时，系统会为每一个对象分配存储空间，每个对象所占用的存储空间只是该对象的数据成员所占用的存储空间，而不包括函数代码所占用的存储空间</p>
-</li>
-</ul>
-<p>在 visual C++的环境下，sizeof(Time)的值为 12，这说明了对象所占用的空间大小只取决于该对象中的数据成员，而与成员函数无关</p>
-<figure class="highlight excel"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">Time</span> <span class="built_in">t</span>, *p;</span><br><span class="line">p = &amp;<span class="built_in">t</span>;</span><br><span class="line"></span><br><span class="line">// 下面三个等价</span><br><span class="line">cout &lt;&lt; p-&gt;<span class="built_in">hour</span>;</span><br><span class="line">cout &lt;&lt; (*p).<span class="built_in">hour</span>;</span><br><span class="line">cout &lt;&lt; t.hour</span><br><span class="line"></span><br><span class="line"><span class="built_in">Time</span> &amp;<span class="symbol">t2</span> = <span class="symbol">t1</span>;  //定义<span class="built_in">Time</span>类的引用<span class="symbol">t2</span>，并使之初始化为<span class="symbol">t1</span>, <span class="symbol">t2</span>指向<span class="symbol">t1</span>的存储单元（<span class="symbol">t2</span>是<span class="symbol">t1</span>的别名）</span><br><span class="line"></span><br><span class="line">cout&lt;&lt;<span class="symbol">t2</span>.<span class="built_in">hour</span>   //</span><br></pre></td></tr></table></figure>
-
-<ul>
-<li>3 利用构造函数实现数据成员的初始化</li>
-</ul>
-<p>构造函数：不具有任何类型，不返回任何值</p>
-<p>在建立对象时自动执行构造函数，并且只执行其中的一个构造函数</p>
-<ul>
-<li>4 析构函数</li>
-</ul>
-<p>当对象的生命周期结束时，会自动执行析构函数。在撤销对象占用的内存之前完成一些清理工作</p>
-<p>构造和析构的先后顺序大原则是：先构造的后析构，后构造的先析构，相当于一个栈，先进后出</p>
-<ul>
-<li>5 </li>
-</ul>
-<ul>
-<li>6 </li>
-</ul>
-
+        <p>类和对象的相关笔记</p>
+        
+          <p class="article-more-link">
+            <a href="/2021/08/08/%E7%B1%BB%E5%92%8C%E5%AF%B9%E8%B1%A1/#more">Read More</a>
+          </p>
+        
       
     </div>
     <footer class="article-footer">
